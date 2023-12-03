@@ -6,6 +6,7 @@ import { CollectionComponent } from './pages/collection/collection.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'collection/:id', component: CollectionComponent },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

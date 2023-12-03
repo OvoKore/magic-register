@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddCardComponent } from 'src/app/modal/add-card/add-card.component';
+import { Collection } from 'src/app/interface/Collection';
+import { Card } from 'src/app/interface/Card';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
     selector: 'app-collection',
@@ -12,55 +15,74 @@ export class CollectionComponent implements OnInit {
 
     constructor(
         private modalService: NgbModal,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private router: Router,
+        private storageService: StorageService
     ) { }
 
-    collectionId: string | null = null;
+    collectionId: number = 0;
+    title = '';
+    collections: Collection[] = [];
+    cards: Card[] = [];
 
     ngOnInit(): void {
         this.route.params.subscribe(params => {
             this.collectionId = params['id'];
         });
+        this.collections = this.storageService.getCollections();
+        const findCollection = this.storageService.findCollection(this.collectionId);
+        if (findCollection) {
+            this.cards = findCollection.cards;
+            this.title = findCollection.name;
+        }
+        else {
+            this.router.navigateByUrl('/');
+        }
     }
-
-    cards = [
-        { name: "Yuriko, the Tiger's Shadow", multiverseid: "450653", count: 1 },
-        { name: "Najeela, the Blade-Blossom", multiverseid: "446030", count: 1 },
-        { name: "Mox Emerald", multiverseid: "630", count: 1 },
-        { name: "Mox Jet", multiverseid: "629", count: 1 },
-        { name: "Mox Pearl", multiverseid: "631", count: 1 },
-    ];
 
     openAddCardModal() {
         const modalRef = this.modalService.open(AddCardComponent, { centered: true });
         modalRef.result.then((card) => {
-            console.log(card)
-            console.log(this.cards)
-            const foundCard = this.cards.find((c: any) => c.multiverseid === card.multiverseid);
+            const foundCard = this.cards.find((c: Card) => c.multiverseid == card.multiverseid);
             if (foundCard) {
                 foundCard.count += 1;
             }
             else {
                 this.cards.push(card);
             }
+            this.updateCollections();
         }, (reason) => {
         });
     }
 
-    changeQuantity(card: any, amount: number) {
-        const foundCard = this.cards.find((c: any) => c.multiverseid === card.multiverseid);
+    changeQuantity(card: Card, amount: number) {
+        const foundCard = this.cards.find((c: Card) => c.multiverseid == card.multiverseid);
         if (foundCard) {
             foundCard.count += amount;
             if (foundCard.count == 0) {
                 this.deleteCard(foundCard);
             }
+            this.updateCollections();
         }
     }
 
-    deleteCard(card: any) {
-        const index = this.cards.findIndex((c: any) => c.multiverseid === card.multiverseid);
+    deleteCard(card: Card) {
+        const index = this.cards.findIndex((c: any) => c.multiverseid == card.multiverseid);
         if (index !== -1) {
             this.cards.splice(index, 1);
+            this.updateCollections();
         }
+    }
+
+    private updateCollections() {
+        const collection = this.storageService.findCollection(this.collectionId);
+        collection.cards = this.cards;
+        this.collections = this.collections.map(c => {
+            if (c.id == this.collectionId) {
+                return { ...collection };
+            }
+            return c;
+        });
+        this.storageService.saveCollections(this.collections);
     }
 }
