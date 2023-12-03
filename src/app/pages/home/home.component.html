@@ -3,7 +3,7 @@
     <button type="button" class="btn btn-primary" (click)="openAddCollectionModal()">Adicionar Coleção</button>
     <div class="row">
         <div *ngFor="let collection of collections" class="col-lg-3 col-md-6 col-sm-6 mb-3">
-            <div class="card">
+            <div class="card d-flex align-items-center">
                 <div class="card-body">
                     <h5 class="card-title">{{ collection.name }}</h5>
                     <div class="btn-group">
