@@ -1,0 +1,25 @@
+<!-- Adicione classes do Bootstrap aos elementos conforme necessário -->
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Adicionar Nova Coleção</h5>
+            <button type="button" class="close" (click)="onNoClick()" aria-label="Fechar">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="form">
+                <div class="form-group">
+                    <label for="collectionName">Nome da Coleção</label>
+                    <input type="text" class="form-control" id="collectionName" formControlName="collectionName"
+                        placeholder="Nome da Coleção" required>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="onNoClick()">Cancelar</button>
+            <button type="button" class="btn btn-primary"
+                [mat-dialog-close]="form.valid && data.name">Adicionar</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="container mt-4">
+    <h2>Coleções</h2>
+    <button type="button" class="btn btn-primary mt-3" (click)="addCollection()">Adicionar Coleção</button>
+    <div class="list-group">
+        <button type="button" class="list-group-item list-group-item-action" *ngFor="let collection of collections">
+            {{ collection }}
+            <button type="button" class="close" (click)="deleteCollection(collection)">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </button>
+    </div>
+</div>
