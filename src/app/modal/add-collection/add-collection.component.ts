@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -18,10 +18,6 @@ export class AddCollectionComponent {
     this.form = fb.group({
       collectionName: ['', [Validators.required, Validators.maxLength(10), Validators.pattern(/^[a-zA-Z0-9]*$/)]]
     });
-  }
-
-  get collectionName() {
-    return this.form.get('collectionName');
   }
 
   applyMask() {

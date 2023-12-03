@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent {
-  text = '© Copyright - 2023 - Todos os direitos reservados';
+  text = `© Copyright ${new Date().getFullYear()} - OvoKore - Todos os direitos reservados`;
 }

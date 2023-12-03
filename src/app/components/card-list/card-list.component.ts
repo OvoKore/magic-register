@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { MagicApiService } from '../../services/mtg.service';
 
 @Component({
@@ -8,6 +8,7 @@ import { MagicApiService } from '../../services/mtg.service';
 })
 export class CardListComponent implements OnChanges {
   @Input() filter: any = '';
+  @Output() cardSelected = new EventEmitter<any>();
   cards: any[] = [];
 
   constructor(private magicApiService: MagicApiService) { }
@@ -28,4 +29,9 @@ export class CardListComponent implements OnChanges {
       }
     }
   }
+
+  selectCard(card: any) {
+    this.cardSelected.emit(card);
+  }
 }
+

@@ -9,12 +9,12 @@ import { CardListComponent } from './components/card-list/card-list.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FilterComponent } from './components/filter/filter.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
 
 import { HomeComponent } from './pages/home/home.component';
 import { CollectionComponent } from './pages/collection/collection.component';
 
 import { AddCollectionComponent } from './modal/add-collection/add-collection.component';
+import { AddCardComponent } from './modal/add-card/add-card.component';
 
 
 
@@ -25,10 +25,10 @@ import { AddCollectionComponent } from './modal/add-collection/add-collection.co
     FooterComponent,
     CardListComponent,
     FilterComponent,
-    NavbarComponent,
     HomeComponent,
     CollectionComponent,
-    AddCollectionComponent
+    AddCollectionComponent,
+    AddCardComponent
   ],
   imports: [
     BrowserModule,
