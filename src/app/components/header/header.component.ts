@@ -1,21 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'app-header',
-    template: `
-    <header>
-      <h1>Magic register</h1>
-    </header>
-  `,
-    styles: [
-        `
-    header {
-      background-color: #333;
-      color: #fff;
-      padding: 5px;
-      text-align: center;
-    }
-    `
-    ]
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.css']
 })
-export class HeaderComponent { }
+export class HeaderComponent {
+  title = 'Magic register'
+}

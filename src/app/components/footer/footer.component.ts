@@ -1,24 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'app-footer',
-    template: `
-    <footer>
-      <p>© Copyright - 2023 - Todos os direitos reservados</p>
-    </footer>
-  `,
-    styles: [
-        `
-    footer {
-      background-color: #333;
-      color: #fff;
-      padding: 5px;
-      text-align: left;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-    }
-    `
-    ]
+  selector: 'app-footer',
+  templateUrl: './footer.component.html',
+  styleUrls: ['./footer.component.css']
 })
-export class FooterComponent { }
+export class FooterComponent {
+  text = '© Copyright - 2023 - Todos os direitos reservados';
+}

@@ -3,12 +3,8 @@ import { MagicApiService } from '../../services/mtg.service';
 
 @Component({
   selector: 'app-card-list',
-  template: `
-    <div *ngFor="let card of cards">
-      <p><b>{{ card.name }}</b></p>
-      <img [src]="card.imageUrl" alt="{{ card.name }}">
-    </div>
-  `
+  templateUrl: './card-list.component.html',
+  styleUrls: ['./card-list.component.css']
 })
 export class CardListComponent implements OnChanges {
   @Input() filter: any = '';
