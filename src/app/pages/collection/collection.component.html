@@ -1,3 +1,24 @@
-<app-filter (filterChanged)="onFilterChanged($event)"></app-filter>
-<app-card-list [filter]="currentFilter"></app-card-list>
-
+<div class="container mt-4">
+    <h2>Lista de Cartas</h2>
+    <button type="button" class="btn btn-primary" (click)="openAddCardModal()">Adicionar Carta</button>
+    <div class="row">
+      <div *ngFor="let card of cards; let i = index" class="col-lg-3 col-md-6 col-sm-12 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <img src="https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseid}}&type=card" class="card-img-top img-fluid" alt="{{ card.name }}" style="aspect-ratio: 2.5/3.5;">
+            <div class="d-flex justify-content-between align-items-center mt-2">
+              <div class="btn-group" role="group">
+                <button type="button" class="btn btn-secondary" (click)="changeQuantity(card, -1)">-</button>
+                <button type="button" class="btn btn-light" disabled>{{ card.count }}</button>
+                <button type="button" class="btn btn-secondary" (click)="changeQuantity(card, 1)">+</button>
+              </div>
+              <button type="button" class="btn btn-danger" (click)="deleteCard(card)">
+                <span class="bi-trash"></span>
+            </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

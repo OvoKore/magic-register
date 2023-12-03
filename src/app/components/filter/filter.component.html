@@ -1,4 +1,4 @@
-<div>
-    <label for="filterInput">Filtrar por nome:</label>
-    <input type="text" id="filterInput" [(ngModel)]="filterText" (input)="applyFilter($event)">
+<div class="input-group mb-3">
+    <span class="input-group-text" id="filterLabel">Nome</span>
+    <input type="text" class="form-control" id="filterInput" [(ngModel)]="filterText" (input)="applyFilter($event)" aria-describedby="filterLabel">
 </div>

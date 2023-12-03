@@ -1,4 +1,7 @@
-<div *ngFor="let card of cards">
-  <p><b>{{ card.name }}</b></p>
-  <img [src]="card.imageUrl" alt="{{ card.name }}">
+<div class="row">
+  <div *ngFor="let card of cards" class="col-lg-6 col-md-12 mb-3" (click)="selectCard(card)">
+    <div class="card">
+      <img [src]="card.imageUrl" alt="{{ card.name }}" class="card-img-top img-fluid" style="aspect-ratio: 2.5/3.5;">
+    </div>
+  </div>
 </div>
