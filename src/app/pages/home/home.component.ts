@@ -1,6 +1,7 @@
-import { Component } from "@angular/core";
-import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
-import { AddCollectionDialog } from "src/app/components/add-collection-dialog/add-collection-dialog.component";
+import { Component } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AddCollectionComponent } from '../../modal/add-collection/add-collection.component';
+
 
 @Component({
   selector: 'app-home',
@@ -9,23 +10,29 @@ import { AddCollectionDialog } from "src/app/components/add-collection-dialog/ad
 })
 export class HomeComponent {
 
-  collections: string[] = ['Coleção 1', 'Coleção 2', 'Coleção 3', 'Coleção 4', 'Coleção 5', 'Coleção 6'];
-
   constructor(private modalService: NgbModal) { }
 
-  addCollection() {
-    const modalRef = this.modalService.open(AddCollectionDialog, { size: 'sm' });
+  collections: any[] = [
+    { id: 1, name: 'Coleção 1' },
+    { id: 2, name: 'Coleção 2' },
+  ];
+  id = 3
 
-    modalRef.result.then((result: string) => {
-      if (result) {
-        this.collections.push(result);
-      }
-    }).catch(() => {
-      console.log('Modal fechado sem adição de coleção');
+  addCollectionModal() {
+    const modalRef = this.modalService.open(AddCollectionComponent, { centered: true });
+    modalRef.result.then((result) => {
+      console.log('Nova coleção adicionada:', result);
+      this.collections.push({
+        id: this.id,
+        name: result
+      })
+      this.id += 1
+    }, (reason) => {
+      console.log('Modal fechado:', reason);
     });
   }
 
-  deleteCollection(collection: string) {
-    console.log('Excluir coleção:', collection);
+  deleteCollection(collection: any) {
+    this.collections = this.collections.filter((item: any) => item.id !== collection.id);
   }
 }

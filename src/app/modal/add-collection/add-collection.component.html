@@ -1,0 +1,23 @@
+<div class="modal-header">
+    <h4 class="modal-title">Adicionar Nova Coleção</h4>
+    <button type="button" class="close" aria-label="Close" (click)="onNoClick()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form [formGroup]="form">
+        <div class="form-group">
+            <label for="collectionName">Nome da Coleção</label>
+            <input type="text" class="form-control" id="collectionName" formControlName="collectionName" (input)="applyMask()" required>
+            <div *ngIf="form.get('collectionName')?.invalid && (form.get('collectionName')?.dirty || form.get('collectionName')?.touched)">
+                <div *ngIf="form.get('collectionName')?.errors?.['required']">Campo obrigatório.</div>
+                <div *ngIf="form.get('collectionName')?.errors?.['maxlength']">Máximo de 10 caracteres permitidos.</div>
+                <div *ngIf="form.get('collectionName')?.errors?.['pattern']">Apenas letras e números são permitidos.</div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="onNoClick()">Cancelar</button>
+    <button type="button" class="btn btn-primary" (click)="onAddClick()"[disabled]="!form.valid">Adicionar</button>
+</div>
