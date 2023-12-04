@@ -3,6 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddCollectionComponent } from '../../modal/add-collection/add-collection.component';
 import { Collection } from 'src/app/interface/Collection';
 import { StorageService } from 'src/app/services/storage.service';
+import { JsonApiService } from 'src/app/services/json-api.service';
 
 
 @Component({
@@ -14,7 +15,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private modalService: NgbModal,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private jsonApiService: JsonApiService
   ) { }
 
   collections: Collection[] = [];
@@ -45,5 +47,32 @@ export class HomeComponent implements OnInit {
   deleteCollection(collection: any) {
     this.storageService.deleteCollection(collection);
     this.collections = this.storageService.getCollections();
+  }
+
+  sendToServer() {
+    this.collections.forEach((collection) => {
+      this.jsonApiService.getCollection(collection).subscribe(
+        (response) => {
+          this.jsonApiService.putCollection(collection).subscribe(
+            (response) => {
+              console.log('Coleção enviada com sucesso:', response);
+            },
+            (error) => {
+              console.error('Erro ao enviar coleção:', error);
+            }
+          );
+        },
+        (error) => {
+          this.jsonApiService.postCollection(collection).subscribe(
+            (response) => {
+              console.log('Coleção enviada com sucesso:', response);
+            },
+            (error) => {
+              console.error('Erro ao enviar coleção:', error);
+            }
+          );
+        }
+      );
+    });
   }
 }

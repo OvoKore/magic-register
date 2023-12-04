@@ -1,0 +1,91 @@
+{
+  "collections": [
+    {
+      "id": 1,
+      "name": "MOX",
+      "cards": [
+        {
+          "name": "Mox Emerald",
+          "multiverseid": "629",
+          "count": 1
+        },
+        {
+          "name": "Mox Jet",
+          "multiverseid": "630",
+          "count": 2
+        },
+        {
+          "name": "Mox Pearl",
+          "multiverseid": "631",
+          "count": 3
+        },
+        {
+          "name": "Mox Ruby",
+          "multiverseid": "632",
+          "count": 4
+        },
+        {
+          "name": "Mox Sapphire",
+          "multiverseid": "633",
+          "count": 5
+        },
+        {
+          "name": "Chrome Mox",
+          "multiverseid": "489913",
+          "count": 6
+        },
+        {
+          "name": "Mox Opal",
+          "multiverseid": "489948",
+          "count": 7
+        },
+        {
+          "name": "Mox Amber",
+          "multiverseid": "586585",
+          "count": 8
+        },
+        {
+          "name": "Mox Tantalite",
+          "multiverseid": "464175",
+          "count": 9
+        },
+        {
+          "name": "Mox Diamond",
+          "multiverseid": "5193",
+          "count": 10
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "land",
+      "cards": [
+        {
+          "name": "Island",
+          "multiverseid": "129606",
+          "count": 2
+        },
+        {
+          "name": "Forest",
+          "multiverseid": "129559",
+          "count": 2
+        },
+        {
+          "name": "Swamp",
+          "multiverseid": "129754",
+          "count": 2
+        },
+        {
+          "name": "Plains",
+          "multiverseid": "129680",
+          "count": 2
+        },
+        {
+          "name": "Mountain",
+          "multiverseid": "129649",
+          "count": 2
+        }
+      ]
+    }
+  ]
+}
