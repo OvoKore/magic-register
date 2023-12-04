@@ -16,6 +16,8 @@ import { CollectionComponent } from './pages/collection/collection.component';
 import { AddCollectionComponent } from './modal/add-collection/add-collection.component';
 import { AddCardComponent } from './modal/add-card/add-card.component';
 
+import { AnoFormatPipe } from './components/pipe/ano-format.pipe';
+
 
 
 @NgModule({
@@ -28,7 +30,8 @@ import { AddCardComponent } from './modal/add-card/add-card.component';
     HomeComponent,
     CollectionComponent,
     AddCollectionComponent,
-    AddCardComponent
+    AddCardComponent,
+    AnoFormatPipe
   ],
   imports: [
     BrowserModule,

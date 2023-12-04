@@ -1,0 +1,4 @@
+{
+  "/json-server/collections": "/collections",
+  "/json-server/collections/:id": "/collections/:id"
+}
