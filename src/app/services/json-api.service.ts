@@ -14,6 +14,7 @@ export class JsonApiService {
     getCollection(collection: Collection): Observable<any> {
         return this.http.get(`${this.apiUrl}/collections/${collection.id}`);
     }
+    
     postCollection(collection: Collection): Observable<any> {
         return this.http.post(`${this.apiUrl}/collections`, collection);
     }
